@@ -156,3 +156,5 @@ db.json
 
 # isort
 pyproject.toml
+
+.code2txt
