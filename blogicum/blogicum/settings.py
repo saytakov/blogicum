@@ -1,8 +1,14 @@
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-^u@!u#3mkqc-er0a^fq*8bflbd(_cm1_56%8@k1%iry-x4w_&w'
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
@@ -61,8 +67,12 @@ WSGI_APPLICATION = 'blogicum.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('BASE_NAME'),
+        'USER': os.getenv('BASE_USER'),
+        'PASSWORD': os.getenv('BASE_PASSWORD'),
+        'HOST': os.getenv('BASE_HOST'),
+        'PORT': os.getenv('PORT')
     }
 }
 
@@ -111,4 +121,5 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
