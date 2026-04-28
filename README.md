@@ -17,7 +17,7 @@ Blogicum — это платформа для ведения блогов, гд�
 - [Запуск тестов](#запуск-тестов)
 - [Примечания / особенности](#примечания--особенности)
 
-## Установка
+## Установка в ручную
 
 ```bash
 git clone https://github.com/saytakov/blogicum.git
@@ -47,6 +47,12 @@ python manage.py migrate
 5. Запуск сервера
 ```
 python manage.py runserver
+```
+
+## Поднятие с помощью Docker Compose
+
+```bash
+docker compose up --build
 ```
 
 ## API
